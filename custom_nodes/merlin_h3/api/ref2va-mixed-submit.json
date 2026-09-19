@@ -1,0 +1,43 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "example.png"
+    }
+  },
+  "2": {
+    "class_type": "MerlinH3Ref2VA",
+    "inputs": {
+      "prompt": "保持 <Picture 1> 中人物的外观，参考 <Video 1> 的镜头运动和动作，用 <Audio 1> 作为声音参考，生成自然连贯的电影镜头。",
+      "base_url": "http://127.0.0.1:18081",
+      "duration": 4,
+      "ratio": "16:9",
+      "inference_steps": 5,
+      "generation_id": 0,
+      "reference_image_1": [
+        "1",
+        0
+      ],
+      "reference_video": [
+        "3",
+        0
+      ],
+      "reference_audio_1": [
+        "4",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "reference.mp4"
+    }
+  },
+  "4": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "reference.wav"
+    }
+  }
+}

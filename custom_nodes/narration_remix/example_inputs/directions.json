@@ -1,0 +1,22 @@
+{
+  "1": {
+    "keywords": [
+      "城市",
+      "夜景"
+    ],
+    "role": "hook"
+  },
+  "2": {
+    "keywords": [
+      "人物",
+      "工作"
+    ],
+    "role": "evidence"
+  },
+  "3": {
+    "keywords": [
+      "日出"
+    ],
+    "role": "ending"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CodexTextGenerate",
+      "title": "Codex · 文本生成",
+      "pos": [
+        70,
+        90
+      ],
+      "size": [
+        590,
+        700
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CodexTextGenerate"
+      },
+      "widgets_values": [
+        "将「一名侦探在雨夜巷口遇见失散多年的妹妹」写成 3 个连续镜头的短剧分镜。每个镜头规划 5 秒，人物外观与场景连续。分别提供中文解说、静态画面提示词和动作/运镜提示词。按 Schema 输出 JSON，不加 Markdown 代码围栏。duration_seconds 是计划时长，不是已对齐的配音时长。",
+        "gpt-5.6-sol",
+        "xhigh",
+        900,
+        "你是短剧与视频创作助手。遵循用户要求，直接输出可用的正文，不添加开场白或过程说明。",
+        "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"shots\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"shot_id\": {\n            \"type\": \"integer\"\n          },\n          \"narration\": {\n            \"type\": \"string\"\n          },\n          \"image_prompt\": {\n            \"type\": \"string\"\n          },\n          \"video_prompt\": {\n            \"type\": \"string\"\n          },\n          \"duration_seconds\": {\n            \"type\": \"number\"\n          }\n        },\n        \"required\": [\n          \"shot_id\",\n          \"narration\",\n          \"image_prompt\",\n          \"video_prompt\",\n          \"duration_seconds\"\n        ],\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"required\": [\n    \"title\",\n    \"shots\"\n  ],\n  \"additionalProperties\": false\n}"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "PreviewAny",
+      "title": "预览生成结果",
+      "pos": [
+        730,
+        90
+      ],
+      "size": [
+        590,
+        700
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "SaveText",
+      "title": "保存生成结果",
+      "pos": [
+        1390,
+        90
+      ],
+      "size": [
+        380,
+        220
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveText"
+      },
+      "widgets_values": [
+        "Codex/storyboard",
+        "json"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      2,
+      0,
+      3,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.75,
+      "offset": [
+        40,
+        40
+      ]
+    }
+  },
+  "version": 0.4
+}

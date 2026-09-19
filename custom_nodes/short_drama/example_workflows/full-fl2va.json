@@ -1,0 +1,1349 @@
+{
+  "last_node_id": 90,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "ShortDramaBrief",
+      "title": "01 · 在这里填写故事方向",
+      "pos": [
+        40,
+        110
+      ],
+      "size": [
+        520,
+        540
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "剧本任务",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "JSON结构",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "slot_index": 1,
+          "shape": 3
+        },
+        {
+          "name": "创作规格",
+          "type": "SHORT_DRAMA_SPEC",
+          "links": [
+            3
+          ],
+          "slot_index": 2,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShortDramaBrief"
+      },
+      "widgets_values": [
+        "一位侦探在雨夜巷口遇见失散多年的妹妹。悬疑开场，温情反转，结尾留下一个小悬念。",
+        "我的短剧",
+        "写实电影感，自然表演，克制运镜，统一人物、服装、光线与色调。",
+        3,
+        5,
+        "16:9"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 2,
+      "type": "CodexTextGenerate",
+      "title": "02 · 完善剧本与分镜 / Sol · 极高",
+      "pos": [
+        650,
+        110
+      ],
+      "size": [
+        490,
+        630
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 1,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "output_schema",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "output_schema"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CodexTextGenerate"
+      },
+      "widgets_values": [
+        "为主题「雨夜重逢」写一段约 200 字的短剧解说，只输出正文。",
+        "gpt-5.6-sol",
+        "xhigh",
+        900,
+        "你是专业短剧编剧和分镜导演，严格按给定制作规格与 JSON Schema 输出。完整剧本、人物设定和逐镜描述必须自洽。",
+        "",
+        true,
+        0
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 3,
+      "type": "ShortDramaShots",
+      "title": "03 · 自动展开所有镜头 / 可粘贴修改稿",
+      "pos": [
+        1220,
+        110
+      ],
+      "size": [
+        440,
+        580
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "spec",
+          "type": "SHORT_DRAMA_SPEC",
+          "link": 3
+        },
+        {
+          "name": "script_json",
+          "type": "STRING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "人物设定提示词",
+          "type": "STRING",
+          "links": [
+            7
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "首帧/分镜提示词",
+          "type": "STRING",
+          "links": [
+            12
+          ],
+          "slot_index": 1,
+          "shape": 6
+        },
+        {
+          "name": "尾帧提示词",
+          "type": "STRING",
+          "links": [
+            17
+          ],
+          "slot_index": 2,
+          "shape": 6
+        },
+        {
+          "name": "视频提示词",
+          "type": "STRING",
+          "links": [
+            21
+          ],
+          "slot_index": 3,
+          "shape": 6
+        },
+        {
+          "name": "逐镜时长",
+          "type": "INT",
+          "links": [
+            22
+          ],
+          "slot_index": 4,
+          "shape": 6
+        },
+        {
+          "name": "视频画幅",
+          "type": "COMBO",
+          "links": [
+            23
+          ],
+          "slot_index": 5,
+          "shape": 3
+        },
+        {
+          "name": "图片尺寸",
+          "type": "STRING",
+          "links": [
+            8,
+            13,
+            18
+          ],
+          "slot_index": 6,
+          "shape": 3
+        },
+        {
+          "name": "人物图保存名",
+          "type": "STRING",
+          "links": [
+            10
+          ],
+          "slot_index": 7,
+          "shape": 3
+        },
+        {
+          "name": "首帧保存名",
+          "type": "STRING",
+          "links": [
+            15
+          ],
+          "slot_index": 8,
+          "shape": 6
+        },
+        {
+          "name": "尾帧保存名",
+          "type": "STRING",
+          "links": [
+            20
+          ],
+          "slot_index": 9,
+          "shape": 6
+        },
+        {
+          "name": "逐镜视频保存名",
+          "type": "STRING",
+          "links": [
+            29
+          ],
+          "slot_index": 10,
+          "shape": 6
+        },
+        {
+          "name": "剧本保存名",
+          "type": "STRING",
+          "links": [
+            6
+          ],
+          "slot_index": 11,
+          "shape": 3
+        },
+        {
+          "name": "成片保存名",
+          "type": "STRING",
+          "links": [
+            32
+          ],
+          "slot_index": 12,
+          "shape": 3
+        },
+        {
+          "name": "最终剧本JSON",
+          "type": "STRING",
+          "links": [
+            5
+          ],
+          "slot_index": 13,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShortDramaShots"
+      },
+      "widgets_values": [
+        "FL2VA",
+        ""
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 4,
+      "type": "SaveText",
+      "title": "完整剧本与分镜 · 预览并保存",
+      "pos": [
+        650,
+        830
+      ],
+      "size": [
+        1000,
+        390
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 5
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 6,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveText"
+      },
+      "widgets_values": [
+        "ComfyUI",
+        "json"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 5,
+      "type": "TextToImageGenerate",
+      "title": "04 · 统一人物与美术设定图",
+      "pos": [
+        1770,
+        110
+      ],
+      "size": [
+        490,
+        590
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 7,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "size",
+          "type": "STRING",
+          "link": 8,
+          "widget": {
+            "name": "size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            9,
+            11
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextToImageGenerate"
+      },
+      "widgets_values": [
+        "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+        "",
+        "gpt-image-2",
+        "1024x1024",
+        "medium",
+        1,
+        600,
+        true,
+        0
+      ],
+      "color": "#354933",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "title": "人物设定图 · 保存",
+      "pos": [
+        1770,
+        830
+      ],
+      "size": [
+        490,
+        390
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 10,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 7,
+      "type": "ReferenceImageGenerate",
+      "title": "05 · 每镜首帧 / 分镜图（参考人物图）",
+      "pos": [
+        2350,
+        110
+      ],
+      "size": [
+        490,
+        590
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_images",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 12,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "size",
+          "type": "STRING",
+          "link": 13,
+          "widget": {
+            "name": "size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            14,
+            16,
+            24
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceImageGenerate"
+      },
+      "widgets_values": [
+        "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+        "",
+        "gpt-image-2",
+        "1024x1024",
+        "medium",
+        1,
+        600,
+        true,
+        0
+      ],
+      "color": "#354933",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "title": "逐镜分镜图 · 保存",
+      "pos": [
+        2350,
+        830
+      ],
+      "size": [
+        490,
+        390
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 15,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 9,
+      "type": "ReferenceImageGenerate",
+      "title": "06 · 每镜尾帧（参考同镜首帧）",
+      "pos": [
+        2930,
+        110
+      ],
+      "size": [
+        490,
+        590
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_images",
+          "type": "IMAGE",
+          "link": 16
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 17,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "size",
+          "type": "STRING",
+          "link": 18,
+          "widget": {
+            "name": "size"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            19,
+            25
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ReferenceImageGenerate"
+      },
+      "widgets_values": [
+        "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+        "",
+        "gpt-image-2",
+        "1024x1024",
+        "medium",
+        1,
+        600,
+        true,
+        0
+      ],
+      "color": "#354933",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 10,
+      "type": "SaveImage",
+      "title": "逐镜尾帧 · 保存",
+      "pos": [
+        2930,
+        830
+      ],
+      "size": [
+        490,
+        390
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 20,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 11,
+      "type": "MerlinH3FL2VA",
+      "title": "07 · MiniMax FL2VA · 逐镜提交",
+      "pos": [
+        3520,
+        110
+      ],
+      "size": [
+        490,
+        680
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "link": 24
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 21,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "duration",
+          "type": "INT",
+          "link": 22,
+          "widget": {
+            "name": "duration"
+          }
+        },
+        {
+          "name": "ratio",
+          "type": "COMBO",
+          "link": 23,
+          "widget": {
+            "name": "ratio"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "task",
+          "type": "MERLIN_H3_TASK",
+          "links": [
+            27
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [
+            26
+          ],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MerlinH3FL2VA"
+      },
+      "widgets_values": [
+        "镜头缓慢推进，人物自然转头，保持角色外观一致，电影质感，环境声自然。",
+        "http://127.0.0.1:18081",
+        4,
+        "16:9",
+        5,
+        0
+      ],
+      "color": "#4a3549",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 12,
+      "type": "PreviewAny",
+      "title": "逐镜任务编号 · 可用于恢复",
+      "pos": [
+        3520,
+        900
+      ],
+      "size": [
+        490,
+        280
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 13,
+      "type": "MerlinH3GetVideo",
+      "title": "08 · 等待并取回逐镜视频",
+      "pos": [
+        4100,
+        110
+      ],
+      "size": [
+        440,
+        300
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "task",
+          "type": "MERLIN_H3_TASK",
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            28
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MerlinH3GetVideo"
+      },
+      "widgets_values": [
+        "",
+        "http://127.0.0.1:18081",
+        120
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 14,
+      "type": "SaveVideo",
+      "title": "每个镜头 · 视频预览并保存",
+      "pos": [
+        4100,
+        560
+      ],
+      "size": [
+        440,
+        530
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 28
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 29,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            30
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "ShortDrama/video",
+        "mp4",
+        "auto"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 15,
+      "type": "ShortDramaJoin",
+      "title": "09 · 按镜头顺序拼接 / 保留原声",
+      "pos": [
+        4660,
+        110
+      ],
+      "size": [
+        480,
+        220
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "videos",
+          "type": "VIDEO",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "成片",
+          "type": "VIDEO",
+          "links": [
+            31
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShortDramaJoin"
+      },
+      "widgets_values": [
+        24
+      ],
+      "color": "#4a4230",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 16,
+      "type": "SaveVideo",
+      "title": "10 · 完整成片 · 预览并导出 MP4",
+      "pos": [
+        4660,
+        500
+      ],
+      "size": [
+        610,
+        580
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 31
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 32,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "ShortDrama/video",
+        "mp4",
+        "auto"
+      ],
+      "color": "#25394a",
+      "bgcolor": "#19212b"
+    },
+    {
+      "id": 90,
+      "type": "Note",
+      "title": "使用说明",
+      "pos": [
+        40,
+        830
+      ],
+      "size": [
+        520,
+        300
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "先启动 start-merlin-h3.command，并确认对应通道有可用实例。\n在 01 填写方向、镜头数、每镜时长与画幅，然后运行。默认 3 镜 × 5 秒。\n可先使用「短剧 · 00 剧本审阅」；将确认/修改后的 JSON 粘到 03 的 edited_script，便可跳过 Codex。\n人物图、分镜图、剧本默认复用。重新创作时修改相应生成节点的 generation_id。H3 的编号只重生成视频。\n本版为真正的首尾帧：每镜独立生成首帧、尾帧，共用同一人物设定。\nn 保持 1，确保一个镜头对应一个图像任务。声音由 H3 原生生成；无配音校对或字幕烧录。"
+      ],
+      "color": "#433b25",
+      "bgcolor": "#272317"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ],
+    [
+      2,
+      1,
+      1,
+      2,
+      1,
+      "STRING"
+    ],
+    [
+      3,
+      1,
+      2,
+      3,
+      0,
+      "SHORT_DRAMA_SPEC"
+    ],
+    [
+      4,
+      2,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      5,
+      3,
+      13,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      6,
+      3,
+      11,
+      4,
+      1,
+      "STRING"
+    ],
+    [
+      7,
+      3,
+      0,
+      5,
+      0,
+      "STRING"
+    ],
+    [
+      8,
+      3,
+      6,
+      5,
+      1,
+      "STRING"
+    ],
+    [
+      9,
+      5,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      3,
+      7,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      11,
+      5,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      3,
+      1,
+      7,
+      1,
+      "STRING"
+    ],
+    [
+      13,
+      3,
+      6,
+      7,
+      2,
+      "STRING"
+    ],
+    [
+      14,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      15,
+      3,
+      8,
+      8,
+      1,
+      "STRING"
+    ],
+    [
+      16,
+      7,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      3,
+      2,
+      9,
+      1,
+      "STRING"
+    ],
+    [
+      18,
+      3,
+      6,
+      9,
+      2,
+      "STRING"
+    ],
+    [
+      19,
+      9,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      3,
+      9,
+      10,
+      1,
+      "STRING"
+    ],
+    [
+      21,
+      3,
+      3,
+      11,
+      2,
+      "STRING"
+    ],
+    [
+      22,
+      3,
+      4,
+      11,
+      3,
+      "INT"
+    ],
+    [
+      23,
+      3,
+      5,
+      11,
+      4,
+      "COMBO"
+    ],
+    [
+      24,
+      7,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      9,
+      0,
+      11,
+      1,
+      "IMAGE"
+    ],
+    [
+      26,
+      11,
+      1,
+      12,
+      0,
+      "STRING"
+    ],
+    [
+      27,
+      11,
+      0,
+      13,
+      0,
+      "MERLIN_H3_TASK"
+    ],
+    [
+      28,
+      13,
+      0,
+      14,
+      0,
+      "VIDEO"
+    ],
+    [
+      29,
+      3,
+      10,
+      14,
+      1,
+      "STRING"
+    ],
+    [
+      30,
+      14,
+      0,
+      15,
+      0,
+      "VIDEO"
+    ],
+    [
+      31,
+      15,
+      0,
+      16,
+      0,
+      "VIDEO"
+    ],
+    [
+      32,
+      3,
+      12,
+      16,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "01—03  输入方向 → 完善剧本 → 分镜",
+      "bounding": [
+        0,
+        30,
+        1695,
+        1230
+      ],
+      "color": "#466d8a",
+      "font_size": 26,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "04—06  人物一致性与逐镜图片（自动复用）",
+      "bounding": [
+        1730,
+        30,
+        1750,
+        1230
+      ],
+      "color": "#52764f",
+      "font_size": 26,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "07—08  对应通道生成逐镜视频",
+      "bounding": [
+        3480,
+        30,
+        1100,
+        1230
+      ],
+      "color": "#835777",
+      "font_size": 26,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "09—10  拼接与成片",
+      "bounding": [
+        4620,
+        30,
+        690,
+        1230
+      ],
+      "color": "#8a764f",
+      "font_size": 26,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        30,
+        40
+      ]
+    }
+  },
+  "version": 0.4
+}

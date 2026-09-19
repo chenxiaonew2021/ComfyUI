@@ -1,0 +1,23 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "example.png"
+    }
+  },
+  "2": {
+    "class_type": "MerlinH3Ref2VA",
+    "inputs": {
+      "prompt": "镜头缓慢推进，人物自然转头，保持角色外观一致，电影质感，环境声自然。",
+      "base_url": "http://127.0.0.1:18081",
+      "duration": 4,
+      "ratio": "16:9",
+      "inference_steps": 5,
+      "generation_id": 0,
+      "reference_image_1": [
+        "1",
+        0
+      ]
+    }
+  }
+}

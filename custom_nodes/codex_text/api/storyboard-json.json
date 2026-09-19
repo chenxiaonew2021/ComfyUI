@@ -1,0 +1,33 @@
+{
+  "1": {
+    "class_type": "CodexTextGenerate",
+    "inputs": {
+      "prompt": "将「一名侦探在雨夜巷口遇见失散多年的妹妹」写成 3 个连续镜头的短剧分镜。每个镜头规划 5 秒，人物外观与场景连续。分别提供中文解说、静态画面提示词和动作/运镜提示词。按 Schema 输出 JSON，不加 Markdown 代码围栏。duration_seconds 是计划时长，不是已对齐的配音时长。",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "timeout_seconds": 900,
+      "instructions": "你是短剧与视频创作助手。遵循用户要求，直接输出可用的正文，不添加开场白或过程说明。",
+      "output_schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"title\": {\n      \"type\": \"string\"\n    },\n    \"shots\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"shot_id\": {\n            \"type\": \"integer\"\n          },\n          \"narration\": {\n            \"type\": \"string\"\n          },\n          \"image_prompt\": {\n            \"type\": \"string\"\n          },\n          \"video_prompt\": {\n            \"type\": \"string\"\n          },\n          \"duration_seconds\": {\n            \"type\": \"number\"\n          }\n        },\n        \"required\": [\n          \"shot_id\",\n          \"narration\",\n          \"image_prompt\",\n          \"video_prompt\",\n          \"duration_seconds\"\n        ],\n        \"additionalProperties\": false\n      }\n    }\n  },\n  \"required\": [\n    \"title\",\n    \"shots\"\n  ],\n  \"additionalProperties\": false\n}"
+    }
+  },
+  "2": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "filename_prefix": "Codex/storyboard",
+      "format": "json"
+    }
+  }
+}

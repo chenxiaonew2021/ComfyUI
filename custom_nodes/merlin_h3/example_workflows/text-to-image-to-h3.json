@@ -1,0 +1,345 @@
+{
+  "last_node_id": 6,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "TextToImageGenerate",
+      "pos": [
+        40,
+        100
+      ],
+      "size": [
+        530,
+        440
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextToImageGenerate"
+      },
+      "widgets_values": [
+        "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+        "",
+        "gpt-image-2",
+        "1280x720",
+        "low",
+        1,
+        300
+      ]
+    },
+    {
+      "id": 2,
+      "type": "MerlinH3Ref2VA",
+      "pos": [
+        640,
+        100
+      ],
+      "size": [
+        530,
+        660
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_image_1",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "reference_image_2",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_3",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_4",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_5",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_6",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_7",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_image_8",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_video",
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "reference_image_9",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "reference_video_2",
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "reference_video_3",
+          "type": "VIDEO",
+          "link": null
+        },
+        {
+          "name": "reference_audio_1",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "reference_audio_2",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "reference_audio_3",
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "task",
+          "type": "MERLIN_H3_TASK",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MerlinH3Ref2VA"
+      },
+      "widgets_values": [
+        "镜头缓慢推进，人物自然转头，保持角色外观一致，电影质感，环境声自然。",
+        "http://127.0.0.1:18081",
+        4,
+        "16:9",
+        5,
+        0
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewAny",
+      "pos": [
+        1250,
+        420
+      ],
+      "size": [
+        400,
+        140
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 4,
+      "type": "MerlinH3GetVideo",
+      "pos": [
+        1250,
+        100
+      ],
+      "size": [
+        400,
+        240
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "task",
+          "type": "MERLIN_H3_TASK",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "task_id",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MerlinH3GetVideo"
+      },
+      "widgets_values": [
+        "",
+        "http://127.0.0.1:18081",
+        120
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SaveVideo",
+      "pos": [
+        1740,
+        100
+      ],
+      "size": [
+        430,
+        400
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "MerlinH3/Ref2VA",
+        "mp4",
+        "auto"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "Note",
+      "pos": [
+        640,
+        820
+      ],
+      "size": [
+        530,
+        160
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "widgets_values": [
+        "先启动 start-merlin-h3.command。默认 768P / 4 秒 / 5 步（可调）。修改 generation_id 才会对相同输入新建任务。task_id 可用于恢复工作流取回结果。"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      1,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "MERLIN_H3_TASK"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "VIDEO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.65,
+      "offset": [
+        30,
+        30
+      ]
+    }
+  },
+  "version": 0.4
+}

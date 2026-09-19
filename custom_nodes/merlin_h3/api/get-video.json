@@ -1,0 +1,22 @@
+{
+  "1": {
+    "class_type": "MerlinH3GetVideo",
+    "inputs": {
+      "task_id": "填写已有的H3任务编号",
+      "base_url": "http://127.0.0.1:18081",
+      "wait_minutes": 120
+    }
+  },
+  "2": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "1",
+        0
+      ],
+      "filename_prefix": "MerlinH3/Recovered",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  }
+}

@@ -5,8 +5,7 @@ __pycache__/
 !/input/example.png
 /models/
 /temp/
-/custom_nodes/
-!custom_nodes/example_node.py.example
+# Custom nodes are maintained and published with this ComfyUI checkout.
 extra_model_paths.yaml
 /.vs
 .vscode/

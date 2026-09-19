@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "request_id": "demo-e01-s02-take01",
+  "project_id": "demo",
+  "episode_id": "e01",
+  "shot_id": "s02",
+  "take": 1,
+  "bible": {
+    "version": "v1",
+    "style": "现代都市真人短剧，自然肤色，低饱和暖色，写实电影光线",
+    "director_notes": "一镜一事，人物表演克制。",
+    "negative_prompt": "不换脸、不换衣、不加字幕水印，不新增人物。",
+    "entities": [
+      {
+        "id": "lin",
+        "kind": "character",
+        "version": "look-v1",
+        "name": "林夏",
+        "description": "二十多岁的女性，齐肩黑发，外观严格参照角色定妆图",
+        "wardrobe": "米白衬衫、深蓝长裤",
+        "voice": "普通话，音色与声音参考一致",
+        "reference_ids": [
+          "lin_look",
+          "lin_voice"
+        ]
+      },
+      {
+        "id": "office",
+        "kind": "scene",
+        "version": "office-v1",
+        "name": "办公室门口",
+        "description": "木门位于画面右侧，左侧玻璃窗，保持室内陈设位置",
+        "reference_ids": [
+          "office_look"
+        ]
+      }
+    ]
+  },
+  "shot": {
+    "description": "林夏听到室内呼唤，停顿片刻，缓缓推门并迈入房间。",
+    "entity_ids": [
+      "lin",
+      "office"
+    ],
+    "camera": {
+      "shot_size": "中景",
+      "angle": "平视",
+      "movement": "缓慢推进",
+      "lens": "50mm"
+    },
+    "blocking": "林夏在画面左侧，面向右侧木门，右手握门把。",
+    "dialogue": [
+      {
+        "speaker_id": "lin",
+        "text": "我来了。",
+        "delivery": "轻声，略有迟疑",
+        "kind": "dialogue"
+      }
+    ],
+    "sound": "轻微门轴声与室内环境声，无背景音乐"
+  },
+  "continuity": {
+    "mode": "match_previous",
+    "previous_shot_id": "s01",
+    "previous_last_frame_id": "previous_end",
+    "state_in": "林夏站在门左侧，右手握住门把，门关闭",
+    "state_out": "门半开，林夏右脚迈过门槛",
+    "axis": "相机始终位于人物行进轴线南侧",
+    "screen_direction": "从左向右",
+    "lighting": "暖光从左侧窗户照入",
+    "time_of_day": "傍晚"
+  },
+  "references": [
+    {
+      "id": "lin_look",
+      "type": "image",
+      "file": "short-drama/lin-look.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "purpose": "identity",
+      "description": "林夏定妆图"
+    },
+    {
+      "id": "office_look",
+      "type": "image",
+      "file": "short-drama/office.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "purpose": "scene",
+      "description": "办公室空间参考"
+    },
+    {
+      "id": "previous_end",
+      "type": "image",
+      "file": "short-drama/previous-last-frame.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "purpose": "continuity",
+      "description": "审阅通过的上一镜末帧"
+    },
+    {
+      "id": "lin_voice",
+      "type": "audio",
+      "file": "short-drama/lin-voice.wav",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "purpose": "voice",
+      "description": "林夏声音，2–15 秒样本"
+    }
+  ],
+  "generation": {
+    "model": "MiniMax-H3",
+    "workflow_version": "short-drama-v1",
+    "duration": 6,
+    "ratio": "9:16",
+    "resolution": "768P",
+    "inference_steps": 5
+  }
+}

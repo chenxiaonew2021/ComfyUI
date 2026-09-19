@@ -1,0 +1,30 @@
+{
+  "request": {
+    "ProductID": "local-demo"
+  },
+  "response": {
+    "Script": {
+      "title": "小猫的三段旅程",
+      "blocks": [
+        {
+          "id": "b1",
+          "clip_id": "courtyard",
+          "voice_mode": "tts",
+          "text": "小猫走进院子。"
+        },
+        {
+          "id": "b2",
+          "clip_id": "indoor",
+          "voice_mode": "tts",
+          "text": "换个角落，继续探索。"
+        },
+        {
+          "id": "b3",
+          "clip_id": "dream",
+          "voice_mode": "tts",
+          "text": "梦里也有新风景。"
+        }
+      ]
+    }
+  }
+}

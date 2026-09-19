@@ -1,0 +1,11 @@
+{
+  "idl_file": "product-remix/idl/REPLACE_WITH_REAL_SERVICE.thrift",
+  "service": "REPLACE_WITH_REAL_SERVICE",
+  "request_type": "REPLACE_WITH_REAL_REQUEST",
+  "method": "REPLACE_WITH_REAL_METHOD",
+  "target": "sd://REPLACE_WITH_AUTHORIZED_PSM",
+  "caller": "REPLACE_WITH_AUTHORIZED_CALLER",
+  "timeout_seconds": 30,
+  "gdpr_token_env": "PRODUCT_REMIX_GDPR_TOKEN",
+  "response_path": ""
+}

@@ -1,0 +1,262 @@
+{
+  "1": {
+    "class_type": "ShortDramaBrief",
+    "inputs": {
+      "direction": "一位侦探在雨夜巷口遇见失散多年的妹妹。悬疑开场，温情反转，结尾留下一个小悬念。",
+      "project_name": "我的短剧",
+      "visual_style": "写实电影感，自然表演，克制运镜，统一人物、服装、光线与色调。",
+      "shot_count": 3,
+      "shot_seconds": 5,
+      "ratio": "16:9"
+    },
+    "_meta": {
+      "title": "01 · 在这里填写故事方向"
+    }
+  },
+  "2": {
+    "class_type": "CodexTextGenerate",
+    "inputs": {
+      "prompt": [
+        "1",
+        0
+      ],
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "timeout_seconds": 900,
+      "instructions": "你是专业短剧编剧和分镜导演，严格按给定制作规格与 JSON Schema 输出。完整剧本、人物设定和逐镜描述必须自洽。",
+      "output_schema": [
+        "1",
+        1
+      ],
+      "reuse_result": true,
+      "generation_id": 0
+    },
+    "_meta": {
+      "title": "02 · 完善剧本与分镜 / Sol · 极高"
+    }
+  },
+  "3": {
+    "class_type": "ShortDramaShots",
+    "inputs": {
+      "spec": [
+        "1",
+        2
+      ],
+      "script_json": [
+        "2",
+        0
+      ],
+      "video_mode": "Ref2VA",
+      "edited_script": ""
+    },
+    "_meta": {
+      "title": "03 · 自动展开所有镜头 / 可粘贴修改稿"
+    }
+  },
+  "4": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "3",
+        13
+      ],
+      "filename_prefix": [
+        "3",
+        11
+      ],
+      "format": "json"
+    },
+    "_meta": {
+      "title": "完整剧本与分镜 · 预览并保存"
+    }
+  },
+  "5": {
+    "class_type": "TextToImageGenerate",
+    "inputs": {
+      "prompt": [
+        "3",
+        0
+      ],
+      "base_url": "",
+      "model": "gpt-image-2",
+      "size": [
+        "3",
+        6
+      ],
+      "quality": "medium",
+      "n": 1,
+      "timeout_seconds": 600,
+      "reuse_result": true,
+      "generation_id": 0
+    },
+    "_meta": {
+      "title": "04 · 统一人物与美术设定图"
+    }
+  },
+  "6": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": [
+        "3",
+        7
+      ]
+    },
+    "_meta": {
+      "title": "人物设定图 · 保存"
+    }
+  },
+  "7": {
+    "class_type": "ReferenceImageGenerate",
+    "inputs": {
+      "reference_images": [
+        "5",
+        0
+      ],
+      "prompt": [
+        "3",
+        1
+      ],
+      "base_url": "",
+      "model": "gpt-image-2",
+      "size": [
+        "3",
+        6
+      ],
+      "quality": "medium",
+      "n": 1,
+      "timeout_seconds": 600,
+      "reuse_result": true,
+      "generation_id": 0
+    },
+    "_meta": {
+      "title": "05 · 每镜首帧 / 分镜图（参考人物图）"
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": [
+        "3",
+        8
+      ]
+    },
+    "_meta": {
+      "title": "逐镜分镜图 · 保存"
+    }
+  },
+  "11": {
+    "class_type": "MerlinH3Ref2VA",
+    "inputs": {
+      "prompt": [
+        "3",
+        3
+      ],
+      "base_url": "http://127.0.0.1:18081",
+      "duration": [
+        "3",
+        4
+      ],
+      "ratio": [
+        "3",
+        5
+      ],
+      "inference_steps": 5,
+      "generation_id": 0,
+      "reference_image_1": [
+        "7",
+        0
+      ],
+      "reference_image_2": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "07 · MiniMax Ref2VA · 逐镜提交"
+    }
+  },
+  "12": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "11",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "逐镜任务编号 · 可用于恢复"
+    }
+  },
+  "13": {
+    "class_type": "MerlinH3GetVideo",
+    "inputs": {
+      "task_id": "",
+      "base_url": "http://127.0.0.1:18081",
+      "wait_minutes": 120,
+      "task": [
+        "11",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "08 · 等待并取回逐镜视频"
+    }
+  },
+  "14": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "13",
+        0
+      ],
+      "filename_prefix": [
+        "3",
+        10
+      ],
+      "format": "mp4",
+      "format.codec": "auto"
+    },
+    "_meta": {
+      "title": "每个镜头 · 视频预览并保存"
+    }
+  },
+  "15": {
+    "class_type": "ShortDramaJoin",
+    "inputs": {
+      "videos": [
+        "14",
+        0
+      ],
+      "fps": 24
+    },
+    "_meta": {
+      "title": "09 · 按镜头顺序拼接 / 保留原声"
+    }
+  },
+  "16": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "15",
+        0
+      ],
+      "filename_prefix": [
+        "3",
+        12
+      ],
+      "format": "mp4",
+      "format.codec": "auto"
+    },
+    "_meta": {
+      "title": "10 · 完整成片 · 预览并导出 MP4"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "1": {
+    "class_type": "ShortDramaPrepare",
+    "inputs": {
+      "request_json": "{\n  \"schema_version\": \"1.0\",\n  \"request_id\": \"demo-e01-s02-take01\",\n  \"project_id\": \"demo\",\n  \"episode_id\": \"e01\",\n  \"shot_id\": \"s02\",\n  \"take\": 1,\n  \"bible\": {\n    \"version\": \"v1\",\n    \"style\": \"现代都市真人短剧，自然肤色，低饱和暖色，写实电影光线\",\n    \"director_notes\": \"一镜一事，人物表演克制。\",\n    \"negative_prompt\": \"不换脸、不换衣、不加字幕水印，不新增人物。\",\n    \"entities\": [\n      {\n        \"id\": \"lin\",\n        \"kind\": \"character\",\n        \"version\": \"look-v1\",\n        \"name\": \"林夏\",\n        \"description\": \"二十多岁的女性，齐肩黑发，外观严格参照角色定妆图\",\n        \"wardrobe\": \"米白衬衫、深蓝长裤\",\n        \"voice\": \"普通话，音色与声音参考一致\",\n        \"reference_ids\": [\n          \"lin_look\",\n          \"lin_voice\"\n        ]\n      },\n      {\n        \"id\": \"office\",\n        \"kind\": \"scene\",\n        \"version\": \"office-v1\",\n        \"name\": \"办公室门口\",\n        \"description\": \"木门位于画面右侧，左侧玻璃窗，保持室内陈设位置\",\n        \"reference_ids\": [\n          \"office_look\"\n        ]\n      }\n    ]\n  },\n  \"shot\": {\n    \"description\": \"林夏听到室内呼唤，停顿片刻，缓缓推门并迈入房间。\",\n    \"entity_ids\": [\n      \"lin\",\n      \"office\"\n    ],\n    \"camera\": {\n      \"shot_size\": \"中景\",\n      \"angle\": \"平视\",\n      \"movement\": \"缓慢推进\",\n      \"lens\": \"50mm\"\n    },\n    \"blocking\": \"林夏在画面左侧，面向右侧木门，右手握门把。\",\n    \"dialogue\": [\n      {\n        \"speaker_id\": \"lin\",\n        \"text\": \"我来了。\",\n        \"delivery\": \"轻声，略有迟疑\",\n        \"kind\": \"dialogue\"\n      }\n    ],\n    \"sound\": \"轻微门轴声与室内环境声，无背景音乐\"\n  },\n  \"continuity\": {\n    \"mode\": \"match_previous\",\n    \"previous_shot_id\": \"s01\",\n    \"previous_last_frame_id\": \"previous_end\",\n    \"state_in\": \"林夏站在门左侧，右手握住门把，门关闭\",\n    \"state_out\": \"门半开，林夏右脚迈过门槛\",\n    \"axis\": \"相机始终位于人物行进轴线南侧\",\n    \"screen_direction\": \"从左向右\",\n    \"lighting\": \"暖光从左侧窗户照入\",\n    \"time_of_day\": \"傍晚\"\n  },\n  \"references\": [\n    {\n      \"id\": \"lin_look\",\n      \"type\": \"image\",\n      \"file\": \"short-drama/lin-look.png\",\n      \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\",\n      \"purpose\": \"identity\",\n      \"description\": \"林夏定妆图\"\n    },\n    {\n      \"id\": \"office_look\",\n      \"type\": \"image\",\n      \"file\": \"short-drama/office.png\",\n      \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\",\n      \"purpose\": \"scene\",\n      \"description\": \"办公室空间参考\"\n    },\n    {\n      \"id\": \"previous_end\",\n      \"type\": \"image\",\n      \"file\": \"short-drama/previous-last-frame.png\",\n      \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\",\n      \"purpose\": \"continuity\",\n      \"description\": \"审阅通过的上一镜末帧\"\n    },\n    {\n      \"id\": \"lin_voice\",\n      \"type\": \"audio\",\n      \"file\": \"short-drama/lin-voice.wav\",\n      \"sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\",\n      \"purpose\": \"voice\",\n      \"description\": \"林夏声音，2–15 秒样本\"\n    }\n  ],\n  \"generation\": {\n    \"model\": \"MiniMax-H3\",\n    \"workflow_version\": \"short-drama-v1\",\n    \"duration\": 6,\n    \"ratio\": \"9:16\",\n    \"resolution\": \"768P\",\n    \"inference_steps\": 5\n  }\n}"
+    }
+  },
+  "2": {
+    "class_type": "ShortDramaSubmit",
+    "inputs": {
+      "shot": [
+        "1",
+        0
+      ],
+      "base_url": "http://127.0.0.1:18081"
+    }
+  },
+  "3": {
+    "class_type": "MerlinH3GetVideo",
+    "inputs": {
+      "task": [
+        "2",
+        0
+      ],
+      "task_id": "",
+      "base_url": "http://127.0.0.1:18081",
+      "wait_minutes": 120
+    }
+  },
+  "4": {
+    "class_type": "ShortDramaResult",
+    "inputs": {
+      "video": [
+        "3",
+        0
+      ],
+      "shot": [
+        "1",
+        0
+      ],
+      "task": [
+        "2",
+        0
+      ]
+    }
+  }
+}

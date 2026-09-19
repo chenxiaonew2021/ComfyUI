@@ -1,0 +1,24 @@
+{
+  "1": {
+    "class_type": "TextToImageGenerate",
+    "inputs": {
+      "prompt": "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+      "base_url": "",
+      "model": "gpt-image-2",
+      "size": "1024x1024",
+      "quality": "low",
+      "n": 1,
+      "timeout_seconds": 300
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "1",
+        0
+      ],
+      "filename_prefix": "TextToImage/gpt-image-2"
+    }
+  }
+}

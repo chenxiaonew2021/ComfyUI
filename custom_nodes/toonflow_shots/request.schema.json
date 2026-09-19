@@ -1,0 +1,502 @@
+{
+  "$defs": {
+    "Bible": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "style": {
+          "maxLength": 3000,
+          "minLength": 1,
+          "title": "Style",
+          "type": "string"
+        },
+        "director_notes": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Director Notes",
+          "type": "string"
+        },
+        "negative_prompt": {
+          "default": "不改变角色脸型、发型、服装和道具，不增加无关人物、字幕或水印。",
+          "maxLength": 6000,
+          "title": "Negative Prompt",
+          "type": "string"
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "maxItems": 12,
+          "title": "Entities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "version",
+        "style"
+      ],
+      "title": "Bible",
+      "type": "object"
+    },
+    "Camera": {
+      "additionalProperties": false,
+      "properties": {
+        "shot_size": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Shot Size",
+          "type": "string"
+        },
+        "angle": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Angle",
+          "type": "string"
+        },
+        "movement": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Movement",
+          "type": "string"
+        },
+        "lens": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Lens",
+          "type": "string"
+        }
+      },
+      "title": "Camera",
+      "type": "object"
+    },
+    "Continuity": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "default": "independent",
+          "enum": [
+            "independent",
+            "match_previous"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "previous_shot_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9_-]{1,80}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Shot Id"
+        },
+        "previous_last_frame_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9_-]{1,80}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Last Frame Id"
+        },
+        "state_in": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "State In",
+          "type": "string"
+        },
+        "state_out": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "State Out",
+          "type": "string"
+        },
+        "axis": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Axis",
+          "type": "string"
+        },
+        "screen_direction": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Screen Direction",
+          "type": "string"
+        },
+        "lighting": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Lighting",
+          "type": "string"
+        },
+        "time_of_day": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Time Of Day",
+          "type": "string"
+        }
+      },
+      "title": "Continuity",
+      "type": "object"
+    },
+    "Dialogue": {
+      "additionalProperties": false,
+      "properties": {
+        "speaker_id": {
+          "pattern": "^[A-Za-z0-9_-]{1,80}$",
+          "title": "Speaker Id",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "delivery": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Delivery",
+          "type": "string"
+        },
+        "kind": {
+          "default": "dialogue",
+          "enum": [
+            "dialogue",
+            "voiceover",
+            "inner_voice"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "speaker_id",
+        "text"
+      ],
+      "title": "Dialogue",
+      "type": "object"
+    },
+    "Entity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9_-]{1,80}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "character",
+            "scene",
+            "prop",
+            "voice",
+            "style"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Description",
+          "type": "string"
+        },
+        "wardrobe": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Wardrobe",
+          "type": "string"
+        },
+        "voice": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Voice",
+          "type": "string"
+        },
+        "reference_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Reference Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "version",
+        "name",
+        "reference_ids"
+      ],
+      "title": "Entity",
+      "type": "object"
+    },
+    "Generation": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "const": "MiniMax-H3",
+          "default": "MiniMax-H3",
+          "title": "Model",
+          "type": "string"
+        },
+        "workflow_version": {
+          "const": "short-drama-v1",
+          "default": "short-drama-v1",
+          "title": "Workflow Version",
+          "type": "string"
+        },
+        "duration": {
+          "maximum": 15,
+          "minimum": 4,
+          "title": "Duration",
+          "type": "integer"
+        },
+        "ratio": {
+          "default": "16:9",
+          "enum": [
+            "16:9",
+            "9:16",
+            "1:1",
+            "4:3",
+            "3:4",
+            "21:9"
+          ],
+          "title": "Ratio",
+          "type": "string"
+        },
+        "resolution": {
+          "const": "768P",
+          "default": "768P",
+          "title": "Resolution",
+          "type": "string"
+        },
+        "inference_steps": {
+          "default": 5,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Inference Steps",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "duration"
+      ],
+      "title": "Generation",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9_-]{1,80}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "image",
+            "video",
+            "audio"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "file": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "File",
+          "type": "string"
+        },
+        "storage": {
+          "default": "input",
+          "enum": [
+            "input",
+            "output"
+          ],
+          "title": "Storage",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "purpose": {
+          "enum": [
+            "identity",
+            "wardrobe",
+            "scene",
+            "prop",
+            "voice",
+            "style",
+            "composition",
+            "continuity",
+            "motion"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "file",
+        "sha256",
+        "purpose"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "Shot": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 6000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "entity_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "type": "string"
+          },
+          "title": "Entity Ids",
+          "type": "array"
+        },
+        "camera": {
+          "$ref": "#/$defs/Camera"
+        },
+        "blocking": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Blocking",
+          "type": "string"
+        },
+        "dialogue": {
+          "items": {
+            "$ref": "#/$defs/Dialogue"
+          },
+          "maxItems": 30,
+          "title": "Dialogue",
+          "type": "array"
+        },
+        "sound": {
+          "default": "",
+          "maxLength": 6000,
+          "title": "Sound",
+          "type": "string"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "title": "Shot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "project_id": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "episode_id": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Episode Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "pattern": "^[A-Za-z0-9_-]{1,80}$",
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "take": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Take",
+      "type": "integer"
+    },
+    "bible": {
+      "$ref": "#/$defs/Bible"
+    },
+    "shot": {
+      "$ref": "#/$defs/Shot"
+    },
+    "continuity": {
+      "$ref": "#/$defs/Continuity"
+    },
+    "references": {
+      "items": {
+        "$ref": "#/$defs/Reference"
+      },
+      "maxItems": 12,
+      "minItems": 1,
+      "title": "References",
+      "type": "array"
+    },
+    "generation": {
+      "$ref": "#/$defs/Generation"
+    }
+  },
+  "required": [
+    "request_id",
+    "project_id",
+    "episode_id",
+    "shot_id",
+    "bible",
+    "shot",
+    "references",
+    "generation"
+  ],
+  "title": "ShotRequest",
+  "type": "object"
+}

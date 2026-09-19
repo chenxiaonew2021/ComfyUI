@@ -1,0 +1,319 @@
+{
+  "1": {
+    "class_type": "ProductRemixInitialize",
+    "inputs": {
+      "spec_json": "{\n  \"project_name\": \"商品混剪流程 · 本地素材演示\",\n  \"product\": {\n    \"id\": \"local-demo\",\n    \"name\": \"小猫的三段旅程\",\n    \"selling_points\": [\n      \"院子探索\",\n      \"室内陪伴\",\n      \"梦境冒险\"\n    ],\n    \"audiences\": [\n      \"喜欢猫咪生活故事的观众\"\n    ],\n    \"tags\": [\n      \"小猫\",\n      \"梦境\"\n    ]\n  },\n  \"video\": {\n    \"resolution\": \"720x1280\",\n    \"fps\": 30,\n    \"fit\": \"pad\"\n  },\n  \"policy\": {\n    \"creative_recall\": true,\n    \"cover\": true,\n    \"aigc\": false,\n    \"super_resolution\": false\n  },\n  \"materials\": [\n    {\n      \"id\": \"courtyard\",\n      \"file\": \"remix/e2e/footage/courtyard.mp4\",\n      \"in\": 0.1,\n      \"out\": 4.3,\n      \"tags\": [\n        \"小猫\",\n        \"院子探索\"\n      ],\n      \"description\": \"项目已有院子小猫视频\",\n      \"narration\": \"小猫走进院子。\"\n    },\n    {\n      \"id\": \"indoor\",\n      \"file\": \"remix/e2e/footage/indoor.mp4\",\n      \"in\": 0.1,\n      \"out\": 4.3,\n      \"tags\": [\n        \"小猫\",\n        \"室内陪伴\"\n      ],\n      \"description\": \"项目已有室内小猫视频\",\n      \"narration\": \"换个角落，继续探索。\"\n    },\n    {\n      \"id\": \"dream\",\n      \"file\": \"remix/e2e/footage/dream.mp4\",\n      \"in\": 0.1,\n      \"out\": 4.3,\n      \"tags\": [\n        \"小猫\",\n        \"梦境冒险\"\n      ],\n      \"description\": \"项目已有云端梦境视频\",\n      \"narration\": \"梦里也有新风景。\"\n    }\n  ],\n  \"creative_library\": [\n    {\n      \"id\": \"three-scenes\",\n      \"tags\": [\n        \"小猫\",\n        \"室内陪伴\"\n      ],\n      \"structure\": \"探索开场 → 陪伴展开 → 梦境收束\"\n    }\n  ],\n  \"voice\": {\n    \"name\": \"Tingting\",\n    \"rate\": 200\n  },\n  \"cover_seconds\": 0.6,\n  \"bgm\": {\n    \"file\": \"remix-demo-bgm.wav\",\n    \"db\": -22,\n    \"duck\": true\n  },\n  \"assets\": {},\n  \"note\": \"仅以已有猫咪素材验证业务阶段和媒体链路，不代表真实商品广告或自动视觉理解结果。\"\n}"
+    }
+  },
+  "2": {
+    "class_type": "ProductRemixPolicy",
+    "inputs": {
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "ProductRemixSupplement",
+    "inputs": {
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "ProductRemixProcessMaterial",
+    "inputs": {
+      "sources": [
+        "3",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "5": {
+    "class_type": "ProductRemixSellingPoints",
+    "inputs": {
+      "catalog": [
+        "4",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "ProductRemixCreativeRecall",
+    "inputs": {
+      "catalog": [
+        "4",
+        0
+      ],
+      "selling": [
+        "5",
+        0
+      ],
+      "policy": [
+        "2",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "ProductRemixCoarseFilter",
+    "inputs": {
+      "catalog": [
+        "4",
+        0
+      ],
+      "selling": [
+        "5",
+        0
+      ],
+      "creative": [
+        "6",
+        0
+      ],
+      "policy": [
+        "2",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "8": {
+    "class_type": "ProductRemixScriptPlan",
+    "inputs": {
+      "candidates": [
+        "7",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "ProductRemixCover",
+    "inputs": {
+      "plan": [
+        "8",
+        0
+      ],
+      "catalog": [
+        "4",
+        0
+      ],
+      "policy": [
+        "2",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "10": {
+    "class_type": "ProductRemixAIShoot",
+    "inputs": {
+      "plan": [
+        "8",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "11": {
+    "class_type": "ProductRemixResolve",
+    "inputs": {
+      "plan": [
+        "8",
+        0
+      ],
+      "catalog": [
+        "4",
+        0
+      ],
+      "generated": [
+        "10",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "ProductRemixValidate",
+    "inputs": {
+      "requirement": [
+        "11",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "ProductRemixVisuals",
+    "inputs": {
+      "requirement": [
+        "12",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "ProductRemixVoices",
+    "inputs": {
+      "requirement": [
+        "12",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "15": {
+    "class_type": "ProductRemixBGM",
+    "inputs": {
+      "requirement": [
+        "12",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "16": {
+    "class_type": "ProductRemixAggregate",
+    "inputs": {
+      "requirement": [
+        "12",
+        0
+      ],
+      "visuals": [
+        "13",
+        0
+      ],
+      "voices": [
+        "14",
+        0
+      ],
+      "bgm": [
+        "15",
+        0
+      ],
+      "cover": [
+        "9",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "ProductRemixBuildTimeline",
+    "inputs": {
+      "prepared": [
+        "16",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "ProductRemixRender",
+    "inputs": {
+      "timeline": [
+        "17",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "19": {
+    "class_type": "ProductRemixSuperResolution",
+    "inputs": {
+      "rendered": [
+        "18",
+        0
+      ],
+      "policy": [
+        "2",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "19",
+        0
+      ],
+      "filename_prefix": "ProductRemix/Final",
+      "format": "mp4",
+      "format.codec": "auto"
+    }
+  },
+  "21": {
+    "class_type": "ProductRemixReport",
+    "inputs": {
+      "final": [
+        "19",
+        1
+      ],
+      "saved_video": [
+        "20",
+        0
+      ],
+      "context": [
+        "1",
+        0
+      ]
+    }
+  }
+}

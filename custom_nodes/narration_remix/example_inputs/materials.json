@@ -1,0 +1,31 @@
+[
+  {
+    "id": "city",
+    "file": "city.mp4",
+    "in": 0,
+    "out": 8,
+    "tags": [
+      "城市",
+      "夜景"
+    ]
+  },
+  {
+    "id": "working",
+    "file": "work.mp4",
+    "in": 1,
+    "out": 9,
+    "tags": [
+      "人物",
+      "工作"
+    ]
+  },
+  {
+    "id": "sunrise",
+    "file": "sunrise.mp4",
+    "in": 0,
+    "out": 7,
+    "tags": [
+      "日出"
+    ]
+  }
+]

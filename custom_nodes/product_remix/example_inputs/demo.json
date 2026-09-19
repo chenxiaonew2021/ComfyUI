@@ -1,0 +1,90 @@
+{
+  "project_name": "商品混剪流程 · 本地素材演示",
+  "product": {
+    "id": "local-demo",
+    "name": "小猫的三段旅程",
+    "selling_points": [
+      "院子探索",
+      "室内陪伴",
+      "梦境冒险"
+    ],
+    "audiences": [
+      "喜欢猫咪生活故事的观众"
+    ],
+    "tags": [
+      "小猫",
+      "梦境"
+    ]
+  },
+  "video": {
+    "resolution": "720x1280",
+    "fps": 30,
+    "fit": "pad"
+  },
+  "policy": {
+    "creative_recall": true,
+    "cover": true,
+    "aigc": false,
+    "super_resolution": false
+  },
+  "materials": [
+    {
+      "id": "courtyard",
+      "file": "remix/e2e/footage/courtyard.mp4",
+      "in": 0.1,
+      "out": 4.3,
+      "tags": [
+        "小猫",
+        "院子探索"
+      ],
+      "description": "项目已有院子小猫视频",
+      "narration": "小猫走进院子。"
+    },
+    {
+      "id": "indoor",
+      "file": "remix/e2e/footage/indoor.mp4",
+      "in": 0.1,
+      "out": 4.3,
+      "tags": [
+        "小猫",
+        "室内陪伴"
+      ],
+      "description": "项目已有室内小猫视频",
+      "narration": "换个角落，继续探索。"
+    },
+    {
+      "id": "dream",
+      "file": "remix/e2e/footage/dream.mp4",
+      "in": 0.1,
+      "out": 4.3,
+      "tags": [
+        "小猫",
+        "梦境冒险"
+      ],
+      "description": "项目已有云端梦境视频",
+      "narration": "梦里也有新风景。"
+    }
+  ],
+  "creative_library": [
+    {
+      "id": "three-scenes",
+      "tags": [
+        "小猫",
+        "室内陪伴"
+      ],
+      "structure": "探索开场 → 陪伴展开 → 梦境收束"
+    }
+  ],
+  "voice": {
+    "name": "Tingting",
+    "rate": 200
+  },
+  "cover_seconds": 0.6,
+  "bgm": {
+    "file": "remix-demo-bgm.wav",
+    "db": -22,
+    "duck": true
+  },
+  "assets": {},
+  "note": "仅以已有猫咪素材验证业务阶段和媒体链路，不代表真实商品广告或自动视觉理解结果。"
+}

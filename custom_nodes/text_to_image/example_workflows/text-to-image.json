@@ -1,0 +1,95 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "TextToImageGenerate",
+      "pos": [
+        80,
+        100
+      ],
+      "size": [
+        590,
+        440
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextToImageGenerate"
+      },
+      "widgets_values": [
+        "一名侦探站在雨夜巷口，中景，电影灯光，写实摄影",
+        "",
+        "gpt-image-2",
+        "1024x1024",
+        "low",
+        1,
+        300
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SaveImage",
+      "pos": [
+        780,
+        100
+      ],
+      "size": [
+        410,
+        440
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "TextToImage/gpt-image-2"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.85,
+      "offset": [
+        80,
+        50
+      ]
+    }
+  },
+  "version": 0.4
+}

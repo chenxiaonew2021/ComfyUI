@@ -1,0 +1,33 @@
+{
+  "1": {
+    "class_type": "CodexTextGenerate",
+    "inputs": {
+      "prompt": "为主题「雨夜重逢」写一段约 200 字的短剧解说。要有开场悬念、情绪推进和结尾转折，只输出正文。",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "timeout_seconds": 900,
+      "instructions": "你是短剧与视频创作助手。遵循用户要求，直接输出可用的正文，不添加开场白或过程说明。",
+      "output_schema": ""
+    }
+  },
+  "2": {
+    "class_type": "PreviewAny",
+    "inputs": {
+      "source": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "SaveText",
+    "inputs": {
+      "text": [
+        "2",
+        0
+      ],
+      "filename_prefix": "Codex/narration",
+      "format": "txt"
+    }
+  }
+}
